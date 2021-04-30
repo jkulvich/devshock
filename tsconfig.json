@@ -1,19 +1,17 @@
 {
   "compilerOptions": {
+    "target": "ES5",
     "moduleResolution": "Node",
     "esModuleInterop": true,
-    "target": "ESNext",
     "sourceMap": true,
-    "allowJs": true,
     "strict": true,
     "baseUrl": "./",
     "skipLibCheck": true,
     "incremental": true,
     "experimentalDecorators": true,
-    "resolveJsonModule": true,
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*.ts"
   ],
   "exclude": [
     "node_modules",

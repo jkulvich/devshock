@@ -44,8 +44,8 @@ Another way to play with it is running internal server via:
 yarn serve
 ```
 
-And navigate to **http://<internal_ip>:8080**  
-For example: **http://192.168.43.188:8080**
+And navigate to **https://<internal_ip>:8080**  
+For example: **https://192.168.43.188:8080**
 
 # 📑 Usage
 
