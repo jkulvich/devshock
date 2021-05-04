@@ -1,6 +1,6 @@
 {
   "name": "devshock",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "📱🔨 Device shock detector based on MotionAPI",
   "homepage": "https://github.com/jkulvich/devshock",
   "main": "src/devshock.ts",
