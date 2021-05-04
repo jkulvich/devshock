@@ -7,7 +7,7 @@ module.exports = {
     mode: 'development',
     entry: './src/index.ts',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'docs'),
         filename: 'devshock.js'
     },
     devServer: {
