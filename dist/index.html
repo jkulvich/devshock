@@ -1,0 +1,119 @@
+<!doctype html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,user-scalable=no"><title>devshock 0.1.0</title><script src="./devshock.js"></script><script defer="defer" src="devshock.js"></script></head><body><div class="cards"><div class="card">📱🔨 Device shock detector based on MotionAPI<br><br><strong>devshock</strong> v0.1.0<br>by Kulagin Yuri | @jkulvich</div><div class="card">📦 Fork me on GitHub<br><a href="https://github.com/jkulvich/devshock">https://github.com/jkulvich/devshock</a></div><div id="incompatible-dev-alert" class="card">⛔ <strong>Your device doesn't support devshock</strong><br>Please, use any mobile device & one of modern browsers</div><div class="card">📈 <strong>MotionAPI Acceleration Charts</strong><div class="charts"><canvas id="chart-acc-x" class="chart" width="120" height="100"></canvas><canvas id="chart-acc-y" class="chart" width="120" height="100"></canvas><canvas id="chart-acc-z" class="chart" width="120" height="100"></canvas></div></div><div class="card">📑 <strong>Logs of devshock</strong><div class="cards"><div class="card-inset" style="overflow-y: scroll; max-height: 100px"><code id="logs"></code></div></div></div></div></body><script>// DevShock
+    (async () => {
+        const ds = new DevShock()
+
+        // DOM Objects Access
+        const incompatibleDevAlertDOM = document.querySelector('#incompatible-dev-alert')
+        const logsDOM = document.querySelector('#logs')
+
+        // Helpers
+        const log = text => logsDOM.innerText = `${text}\n` + logsDOM.innerText
+
+        // DevShock Availability Check & Alert
+        if (ds.available()) {
+            incompatibleDevAlertDOM.classList.add('hidden')
+            log('DevShock now listening for your actions')
+
+            ds.addListener('shock', ev => {
+                const d = new Date(ev.timeStamp)
+                const timeStr = `${`${d.getMinutes()}`.padStart(2, '0')}:${`${d.getSeconds()}`.padStart(2, '0')}.${`${d.getMilliseconds()}`.padEnd(3, '0')}`
+                log(`${timeStr} | dir: ${ev.side} | force: ${Math.trunc(ev.force)}`)
+            })
+        }
+    })();
+
+    // Charts
+    (async () => {
+        // -1 to 1
+        const chartData = {
+            x: 0,
+            y: 0,
+            z: 0,
+        }
+
+        const startMonitoring = (canvas, color, dataRequest) => {
+            const ctx = canvas.getContext('2d')
+            setInterval(() => {
+                ctx.drawImage(canvas, -1, 0)
+                ctx.fillStyle = 'black'
+                ctx.fillRect(canvas.width - 1, 0, 1, canvas.height)
+                ctx.fillStyle = color
+                ctx.fillRect(canvas.width - 1, -dataRequest() * (canvas.height / 2) + (canvas.height / 2), 1, 1)
+            }, 16)
+        }
+
+        startMonitoring(document.querySelector('#chart-acc-x'), '#FFFF00', () => chartData.x)
+        startMonitoring(document.querySelector('#chart-acc-y'), '#00FFFF', () => chartData.y)
+        startMonitoring(document.querySelector('#chart-acc-z'), '#FF00FF', () => chartData.z)
+
+        if ('DeviceMotionEvent' in window) {
+            window.addEventListener('devicemotion', e => {
+                const c = 0.5
+                chartData.x = e.acceleration.x * c
+                chartData.y = e.acceleration.y * c
+                chartData.z = e.acceleration.z * c
+            })
+        }
+    })();</script><style>:root {
+        --background: #E5E5E5;
+        --text-color: #444444;
+        --font-family: sans;
+        --skeu-shadow: -3px 3px 6px rgba(202, 202, 202, 0.2),
+        3px -3px 6px rgba(202, 202, 202, 0.2),
+        -3px -3px 6px rgba(246, 246, 246, 0.9),
+        3px 3px 8px rgba(202, 202, 202, 0.9),
+        inset 1px 1px 2px rgba(246, 246, 246, 0.3),
+        inset -1px -1px 2px rgba(202, 202, 202, 0.5);
+        --skeu-shadow-inset: 1px 1px 2px rgba(246, 246, 246, 0.3),
+        -1px -1px 2px rgba(202, 202, 202, 0.5),
+        inset -3px 3px 6px rgba(202, 202, 202, 0.2),
+        inset 3px -3px 6px rgba(202, 202, 202, 0.2),
+        inset -3px -3px 6px rgba(246, 246, 246, 0.9),
+        inset 3px 3px 8px rgba(202, 202, 202, 0.9);
+        --radius: 10px;
+    }
+
+    body {
+        background: var(--background);
+        color: var(--text-color);
+        font-family: var(--font-family);
+        font-size: 1em;
+        display: flex;
+        justify-content: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .charts {
+        margin: 1em 0 0 0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .chart {
+        background: #000000;
+        border-radius: var(--radius);
+    }
+
+    .cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .card,
+    .card-inset {
+        border-radius: var(--radius);
+        box-shadow: var(--skeu-shadow);
+        width: 90%;
+        max-width: 600px;
+        padding: 1em;
+        margin: 2em 0 0 0;
+    }
+
+    .card-inset {
+        box-shadow: var(--skeu-shadow-inset);
+    }</style>
