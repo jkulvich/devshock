@@ -5,10 +5,9 @@
   "homepage": "https://github.com/jkulvich/devshock",
   "main": "src/devshock.ts",
   "scripts": {
-    "lint": "npx gulp lint",
-    "build": "npx gulp build",
-    "clean": "npx gulp clean",
-    "serve": "npx gulp serve"
+    "build": "webpack --mode=production",
+    "lint": "npx eslint ./src",
+    "serve": "webpack serve"
   },
   "keywords": [
     "device",
@@ -29,31 +28,24 @@
   "author": "Kulagin Yuri | @jkulvich",
   "license": "MIT",
   "devDependencies": {
-    "@types/gulp": "^4.0.8",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
+    "@webpack-cli/generators": "^2.0.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "del": "^6.0.0",
     "eslint": "^7.25.0",
-    "gulp": "^4.0.2",
-    "gulp-babel": "7",
-    "gulp-browserify": "^0.5.1",
-    "gulp-cli": "^2.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-eslint": "^6.0.0",
-    "gulp-minify": "^3.1.0",
-    "gulp-serve": "^1.4.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
+    "html-webpack-plugin": "^5.3.1",
     "ip": "^1.1.5",
+    "ts-loader": "^9.1.1",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   },
-  "dependencies": {
-    "event-target-shim": "^6.0.2"
-  },
+  "dependencies": {},
   "browserslist": [
-    "not dead",
     "> 5%"
   ]
 }

@@ -23,12 +23,6 @@ export default class DevShock {
      * @private
      */
     private onDeviceMotion(e: DeviceMotionEvent) {
-        //TODO: add gulp module loader or move to webpack
         //TODO: Add vectors calculation
     }
-}
-
-// Export into globalThis for browsers
-if (window) {
-    (window as any)['DevShock'] = DevShock
 }

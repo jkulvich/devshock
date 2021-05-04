@@ -26,8 +26,8 @@ npm install devshock
 
 # 🏗 Build & Try
 
-This project written with TypeScript and it better to use it in projects built with some assembly systems like Webpack
-or Gulp.
+This project written with TypeScript and it better to use it in projects
+built with some assembly systems like Webpack or Gulp.
 
 Anyway, you can build it and use it as a single js file with:
 
@@ -35,17 +35,15 @@ Anyway, you can build it and use it as a single js file with:
 yarn build
 ```
 
-So you'll get a **dist** folder with **devshock.js** and **devshock.min.js**
-file. Moreover, you can test they via **index.html**
+So you'll get a **dist** folder with **devshock.js** which can be integrated
+in your project as raw js lib.
 
-Another way to play with it is running internal server via:
+To test the lib use next command and follow to **https://<internal_ip>:8080**
+from your mobile device:
 
 ```shell
 yarn serve
 ```
-
-And navigate to **https://<internal_ip>:8080**  
-For example: **https://192.168.43.188:8080**
 
 # 📑 Usage
 
