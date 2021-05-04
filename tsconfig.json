@@ -1,20 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "strict": true,
-    "baseUrl": "./",
-    "skipLibCheck": true,
-    "incremental": true,
-    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "allowJs": true
   },
-  "include": [
-    "./src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "build"
-  ]
+  "include": ["./src/"]
 }
