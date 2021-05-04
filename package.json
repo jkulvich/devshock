@@ -44,7 +44,10 @@
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "eventemitter3": "^4.0.7",
+    "vec3": "^0.1.7"
+  },
   "browserslist": [
     "> 5%"
   ]

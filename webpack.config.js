@@ -1,3 +1,4 @@
+const package = require('./package.json')
 const path = require('path');
 const ip = require('ip');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -18,6 +19,11 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html',
+            title: package.name,
+            ver: package.version,
+            desc: package.description,
+            page: package.homepage,
+            author: package.author
         }),
     ],
     module: {
