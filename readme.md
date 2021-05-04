@@ -16,7 +16,7 @@ There is many use-cases to make your site/app more interactive and featured. Sev
 - Bump to pair
 - Knock to the back to make smth (open chat, move back and so on)
 
-[![DevShock Mobile Example](./assets/mobile_2.jpg)](https://jkulvich.github.io/devshock)
+[![DevShock Mobile Example](https://raw.githubusercontent.com/jkulvich/devshock/main/assets/mobile_2.jpg)](https://jkulvich.github.io/devshock)
 
 # 📦 Installation
 
