@@ -72,7 +72,7 @@ if (dshock.available())
 
 JavaScript:
 ```html
-<script src="https://raw.githubusercontent.com/jkulvich/devshock/main/docs/devshock.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/devshock/docs/devshock.js"></script>
 ```
 
 ```javascript
